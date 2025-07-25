@@ -1,0 +1,442 @@
+/* --- FUENTES Y VARIABLES --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap' );
+
+:root {
+    --font-primary: 'Montserrat', sans-serif;
+    --color-text: #333;
+    --color-text-light: #f8f8f8;
+    --color-primary: #005A9C; /* Azul corporativo */
+    --color-dark: #111111; /* Negro/Gris oscuro */
+    --color-bg: #ffffff; /* Fondo principal blanco */
+}
+
+/* --- ESTILOS GENERALES --- */
+body {
+    font-family: var(--font-primary);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+}
+
+/* --- PRELOADER --- */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+.preloader-logo {
+    max-width: 150px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* --- NAVEGACIÓN --- */
+.main-nav {
+    padding: 1.5rem 0;
+    transition: background-color 0.4s ease, padding 0.4s ease;
+    z-index: 1050; /* Z-index alto para estar siempre por encima */
+}
+
+/* ESTADO INICIAL (ARRIBA): Transparente con texto blanco */
+.main-nav.navbar-dark .nav-link {
+    color: var(--color-text-light) !important;
+}
+.main-nav.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e" );
+}
+
+/* ESTADO CON SCROLL: Fondo blanco con texto oscuro */
+.main-nav.navbar-light {
+    background-color: var(--color-dark); /* Fondo blanco sólido */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 1rem 0;
+}
+.main-nav.navbar-light .nav-link {
+    color: var(--color-text-light) !important;
+}
+.main-nav.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e" );
+}
+
+.nav-logo {
+    height: 40px;
+    transition: height 0.3s ease;
+}
+.main-nav.scrolled .nav-logo {
+    height: 35px;
+}
+
+.nav-link {
+    font-weight: 700;
+    margin: 0 1rem;
+    position: relative;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+}
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+.main-nav.navbar-light .navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* --- HERO CON IMAGEN DE FONDO --- */
+.hero-fullscreen {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    color: var(--color-text-light);
+}
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(17, 17, 17, 0.555), rgba(17, 17, 17, 0.466)), url('https://static.wixstatic.com/media/11062b_4f14b356c1df4854968cf1cc94ca98c5f000.jpg/v1/fill/w_1000,h_563,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_4f14b356c1df4854968cf1cc94ca98c5f000.jpg' );
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+.hero-title-small {
+    font-size: clamp(2.5rem, 8vw, 4.5rem); /* Más pequeño */
+    font-weight: 900;
+    line-height: 1.2;
+}
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-text-light);
+    animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+    40% { transform: translate(-50%, -15px); }
+    60% { transform: translate(-50%, -5px); }
+}
+
+/* --- SECCIONES --- */
+.section-container {
+    padding: 80px 0;
+}
+.section-title {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 900;
+    margin-bottom: 1rem;
+    color: var(--color-dark);
+}
+
+/* --- SERVICIOS BENTO GRID --- */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 300px);
+    gap: 1rem;
+}
+.bento-item {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    color: var(--color-text-light);
+}
+.bento-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%);
+    transition: background 0.3s ease;
+}
+.bento-item:hover::after {
+    background: linear-gradient(to top, rgba(0, 90, 156, 0.8), transparent 50%);
+}
+.bento-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.bento-item:hover img {
+    transform: scale(1.05);
+}
+.bento-item-large {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+}
+.bento-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 1.5rem;
+    z-index: 2;
+    width: 100%;
+}
+.bento-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.bento-content p {
+    margin: 0;
+    opacity: 0.8;
+}
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 300px);
+    }
+    .bento-item-large {
+        grid-column: auto;
+        grid-row: auto;
+    }
+}
+.bento-item-cta {
+    background-color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+.bento-item-cta:hover {
+    background-color: #004170; /* Azul más oscuro */
+}
+.bento-item-cta .arrow-icon {
+    font-size: 2rem;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+.bento-item-cta:hover .arrow-icon {
+    transform: translateX(10px);
+}
+
+/* ... (y también actualiza la media query para el bento grid) ... */
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+        /* Ahora son 4 items, así que necesitamos 4 filas */
+        grid-template-rows: repeat(4, 300px);
+    }
+    /* ... (el resto de la media query se mantiene) ... */
+}
+
+/* --- FOOTER --- */
+.main-footer {
+    background-color: var(--color-dark);
+    color: var(--color-text-light);
+}
+.footer-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+.footer-contact-link {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+.footer-contact-link:hover {
+    color: #fff;
+}
+.footer-subtitle {
+    font-weight: 700;
+    color: var(--color-text-light);
+    margin-bottom: 0.75rem;
+    border-left: 3px solid var(--color-primary);
+    padding-left: 1rem;
+}
+.footer-text {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+
+/* --- ESTILOS PÁGINA "SOBRE NOSOTROS" --- */
+
+/* Hero de Páginas Interiores */
+.page-hero {
+    height: 60vh; /* Un poco más bajo que el de la home */
+    width: 100%;
+    position: relative;
+    color: var(--color-text-light );
+}
+
+/* Filas de Misión y Visión */
+.feature-row {
+    margin-bottom: 4rem;
+}
+
+.feature-title {
+    font-size: clamp(2rem, 7vw, 3.5rem);
+    font-weight: 900;
+    color: var(--color-dark);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.feature-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 4px;
+    background-color: var(--color-primary);
+}
+
+.feature-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+.feature-image-wrapper {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.feature-image-wrapper img {
+    transition: transform 0.4s ease;
+}
+
+.feature-image-wrapper:hover img {
+    transform: scale(1.05);
+}
+
+/* Sección de Valores */
+.value-item {
+    border-top: 2px solid var(--color-text);
+    padding-top: 1.5rem;
+}
+
+.value-item h4 {
+    font-size: 1.5rem;
+    color: var(--color-dark);
+    margin-bottom: 0.5rem;
+}
+
+.value-item p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* --- AJUSTES DE RESPONSIVIDAD (MEDIA QUERIES) --- */
+
+/* Aplicar estos estilos en pantallas de 768px o menos (tablets y móviles) */
+@media (max-width: 768px) {
+
+    /* --- AJUSTES GENERALES PARA MÓVIL --- */
+    .section-container {
+        padding: 60px 0; /* Reducir el espaciado vertical en las secciones */
+    }
+
+    /* --- AJUSTES PARA "SOBRE NOSOTROS" EN MÓVIL --- */
+
+    /* Hero de la página */
+    .page-hero {
+        height: 50vh; /* Hacer el hero más bajo en móviles */
+    }
+
+    .hero-title {
+        /* Reducir el tamaño del título principal para que no se corte */
+        font-size: clamp(2.5rem, 15vw, 3.5rem); 
+    }
+
+    /* Filas de Misión y Visión */
+    .feature-row {
+        margin-bottom: 3rem; /* Reducir el margen entre Misión y Visión */
+        text-align: center; /* Centrar el texto para un look más limpio en móvil */
+    }
+
+    .feature-title {
+        font-size: 2.5rem; /* Reducir tamaño del título de la sección */
+    }
+
+    .feature-title::after {
+        /* Centrar la línea de acento debajo del título */
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .feature-image-wrapper {
+        /* Añadir un margen superior a la imagen para separarla del texto */
+        margin-top: 2rem;
+    }
+
+    /* Invertir el orden visual en móvil para que siempre sea Título -> Texto -> Imagen */
+    .feature-row .order-md-1 {
+        order: 2 !important;
+    }
+    .feature-row .order-md-2 {
+        order: 1 !important;
+    }
+
+    /* Sección de Valores */
+    .value-item {
+        /* Añadir espacio debajo de cada valor para que no se peguen */
+        margin-bottom: 2.5rem; 
+    }
+
+    .value-item:last-child {
+        margin-bottom: 0; /* Eliminar el margen del último elemento */
+    }
+}
+
+@media (max-width: 768px) {
+    /* ... (todas las reglas que ya teníamos para móvil) ... */
+
+    /* Ajuste para la nueva sección "Quiénes Somos" */
+    .feature-text {
+        text-align: left; /* Mejorar legibilidad en párrafos largos en móvil */
+    }
+}
