@@ -4,42 +4,68 @@ document.addEventListener('DOMContentLoaded', function() {
     const preloader = document.querySelector('.preloader');
     window.addEventListener('load', function() {
         preloader.classList.add('hidden');
-        
     });
 
     // 2. Inicializar AOS (Animate on Scroll)
     AOS.init({
-        duration: 1000,
+        duration: 800,
         once: true,
         offset: 50
     });
 
-    // 3. Lógica MEJORADA de la barra de navegación al hacer scroll
+    // =====================================================================
+    // =================== LÓGICA AVANZADA DE NAVEGACIÓN ===================
+    // =====================================================================
     const nav = document.querySelector('.main-nav');
-    window.addEventListener('scroll', function() {
+    const navToggler = document.querySelector('.navbar-toggler');
+    let lastScrollY = window.scrollY;
+
+    function handleNavBackground() {
         if (window.scrollY > 50) {
-            // Al hacer scroll hacia abajo
-            nav.classList.add('scrolled', 'navbar-light'); // Añade la clase para texto oscuro
-            nav.classList.remove('navbar-dark'); // Quita la clase para texto claro
+            nav.classList.add('scrolled');
         } else {
-            // Al estar arriba del todo
-            nav.classList.remove('scrolled', 'navbar-light'); // Quita la clase para texto oscuro
-            nav.classList.add('navbar-dark'); // Vuelve a poner la clase para texto claro
+            if (!nav.classList.contains('menu-open')) {
+                nav.classList.remove('scrolled');
+            }
+        }
+    }
+
+    function handleNavVisibility() {
+        // Ocultar solo si hemos bajado más de la altura de la propia nav
+        if (window.scrollY > lastScrollY && window.scrollY > 100) {
+            nav.classList.add('nav-hidden');
+        } else {
+            nav.classList.remove('nav-hidden');
+        }
+        lastScrollY = window.scrollY;
+    }
+
+    window.addEventListener('scroll', function() {
+        handleNavBackground();
+        if (!nav.classList.contains('menu-open')) {
+            handleNavVisibility();
         }
     });
 
-    // 4. Scroll suave para el indicador (sin cambios)
-    const scrollLink = document.querySelector('.scroll-down-indicator');
-    if (scrollLink) {
-        scrollLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
+    if (navToggler) {
+        navToggler.addEventListener('click', function() {
+            nav.classList.toggle('menu-open');
+            if (nav.classList.contains('menu-open')) {
+                nav.classList.add('scrolled');
+                nav.classList.remove('nav-hidden');
+            } else {
+                handleNavBackground();
             }
         });
     }
+
+    window.addEventListener('pageshow', function(event) {
+        if (nav.classList.contains('menu-open')) {
+            nav.classList.remove('menu-open');
+            const bsCollapse = new bootstrap.Collapse(document.getElementById('navbarNav'), {
+              toggle: false
+            });
+            bsCollapse.hide();
+        }
+    });
 });
