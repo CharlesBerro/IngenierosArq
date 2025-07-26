@@ -3,10 +3,10 @@
 
 :root {
     --font-primary: 'Montserrat', sans-serif;
-    --color-text: #333;
+    --color-text: #333333dc;
     --color-text-light: #f8f8f8;
     --color-primary: #005A9C; /* Azul corporativo */
-    --color-dark: #111111; /* Negro/Gris oscuro */
+    --color-dark: #171c31da; /* Negro/Gris oscuro */
     --color-bg: #ffffff; /* Fondo principal blanco */
 }
 
@@ -50,34 +50,44 @@ h1, h2, h3, h4, h5, h6 {
     100% { transform: scale(1); }
 }
 
-/* --- NAVEGACIÓN --- */
+/* --- NAVEGACIÓN (VERSIÓN REFORZADA) --- */
 .main-nav {
+    background-color: transparent; /* Fondo transparente por defecto */
     padding: 1.5rem 0;
     transition: background-color 0.4s ease, padding 0.4s ease;
-    z-index: 1050; /* Z-index alto para estar siempre por encima */
+    z-index: 1050;
 }
 
-/* ESTADO INICIAL (ARRIBA): Transparente con texto blanco */
-.main-nav.navbar-dark .nav-link {
-    color: var(--color-text-light) !important;
+/* ESTADO INICIAL (SIN SCROLL) */
+.main-nav .nav-link {
+    color: var(--color-text-light) !important; /* Texto blanco */
 }
-.main-nav.navbar-dark .navbar-toggler-icon {
+.main-nav .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e" );
 }
+.main-nav .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
 
-/* ESTADO CON SCROLL: Fondo blanco con texto oscuro */
-.main-nav.navbar-light {
-    background-color: var(--color-dark); /* Fondo blanco sólido */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
+/* ESTADO CON SCROLL (CUANDO TIENE LA CLASE .scrolled) */
+.main-nav.scrolled {
+    background-color: var(--color-dark); /* Fondo gris oscuro */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     padding: 1rem 0;
 }
-.main-nav.navbar-light .nav-link {
-    color: var(--color-text-light) !important;
+.main-nav.scrolled .nav-link {
+    color: var(--color-text-light) !important; /* Texto sigue siendo blanco */
 }
-.main-nav.navbar-light .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e" );
+.main-nav.scrolled .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e" );
+}
+.main-nav.scrolled .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
+
+/* ESTILOS COMUNES (Logo, hover de enlaces, etc.) */
 .nav-logo {
     height: 40px;
     transition: height 0.3s ease;
@@ -85,7 +95,6 @@ h1, h2, h3, h4, h5, h6 {
 .main-nav.scrolled .nav-logo {
     height: 35px;
 }
-
 .nav-link {
     font-weight: 700;
     margin: 0 1rem;
@@ -103,13 +112,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 .nav-link:hover::after, .nav-link.active::after {
     width: 100%;
-}
-
-.navbar-toggler {
-    border-color: rgba(255, 255, 255, 0.5);
-}
-.main-nav.navbar-light .navbar-toggler {
-    border-color: rgba(0, 0, 0, 0.1);
 }
 
 /* --- HERO CON IMAGEN DE FONDO --- */
@@ -311,8 +313,16 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Filas de Misión y Visión */
 .feature-row {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem; /* <-- CAMBIO: Reducido de 4rem a 3rem */
+    padding-bottom: 3rem; /* <-- AÑADIDO: Espacio para la línea divisoria */
+    border-bottom: 1px solid #e9ecef; /* <-- AÑADIDO: Línea divisoria sutil */
+    position: relative;
 }
+/* Para que la última fila no tenga línea ni espacio extra */
+.feature-row:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;}
 
 .feature-title {
     font-size: clamp(2rem, 7vw, 3.5rem);
@@ -355,8 +365,30 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Sección de Valores */
 .value-item {
-    border-top: 2px solid var(--color-text);
-    padding-top: 1.5rem;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.value-item:hover {
+    transform: translateY(-10px );
+}
+
+.value-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1.5rem auto;
+    background-color: rgba(0, 90, 156, 0.1); /* Azul muy claro */
+    color: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.value-item:hover .value-icon {
+    background-color: var(--color-primary);
+    color: #fff;
 }
 
 .value-item h4 {
@@ -369,6 +401,134 @@ h1, h2, h3, h4, h5, h6 {
     color: #666;
     font-size: 0.95rem;
 }
+
+/* --- ESTILOS ADICIONALES PARA FOOTER --- */
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7 );
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    padding-left: 5px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem; /* Espacio entre iconos */
+}
+
+.social-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-3px);
+}
+
+/* Estilo especial para el botón de WhatsApp */
+.whatsapp-icon {
+    background-color: #25D366; /* Color oficial de WhatsApp */
+}
+
+.whatsapp-icon:hover {
+    background-color: #128C7E; /* Un verde más oscuro para el hover */
+}
+
+/* --- ESTILOS PÁGINA "PROYECTOS" --- */
+
+.portfolio-item {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05 );
+    text-decoration: none;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 350px; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+    transition: transform 0.4s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+.portfolio-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: #fff;
+    transform: translateY(100%); /* Empieza oculto abajo */
+    transition: transform 0.4s ease;
+}
+
+.portfolio-item:hover .portfolio-caption {
+    transform: translateY(0); /* Se muestra al hacer hover */
+}
+
+.portfolio-title {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.portfolio-category {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* --- ESTILOS ADICIONALES PARA PÁGINA DE PROYECTOS --- */
+
+.projects-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 250px; /* Altura base de cada celda */
+    grid-auto-flow: dense; /* Permite que los items rellenen huecos */
+    gap: 1rem;
+}
+
+/* Modificadores para el tamaño de los items del bento */
+.bento-tall {
+    grid-row: span 2; /* Ocupa 2 celdas de alto */
+}
+
+.bento-wide {
+    grid-column: span 2; /* Ocupa 2 celdas de ancho */
+}
+
+/* Ajustes para pantallas más grandes para un layout más interesante */
+@media (min-width: 768px) {
+    .projects-bento-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas en tablets y escritorio */
+    }
+    /* Para que el item ancho ocupe 2 de las 3 columnas */
+    .bento-wide {
+        grid-column: span 2;
+    }
+}
+
 
 /* --- AJUSTES DE RESPONSIVIDAD (MEDIA QUERIES) --- */
 

@@ -6,20 +6,22 @@
     <title>Sobre Nosotros - GR.IngArq SAS</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS CSS para animaciones -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <!-- PRELOADER -->
     <div class="preloader">
-        <img src="assets/images/logo.avif" alt="GR.IngArq SAS" class="preloader-logo">
+        <img src="assets/images/logo.avif" alt="Logo GR.IngArq SAS" class="preloader-logo">
     </div>
 
     <!-- NAVEGACIÓN -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top main-nav">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top main-nav">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="assets/images/logo.avif" alt="Logo GR.IngArq SAS" class="nav-logo">
+                <img src="assets/images/logo.avif" alt="Logo GR.IngArq SAS" class="nav-logo rounded">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -41,7 +43,7 @@
         <div class="container position-relative">
             <div class="row justify-content-center">
                 <div class="col-lg-10 text-center">
-                    <h1 class="hero-title" data-aos="fade-up">
+                    <h1 class="hero-title-small" data-aos="fade-up">
                         Nuestra Filosofía
                     </h1>
                     <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
@@ -52,9 +54,7 @@
         </div>
     </header>
 
-    <!-- ======================================================= -->
-    <!-- ======================= QUIÉNES SOMOS (NUEVA SECCIÓN ) === -->
-    <!-- ======================================================= -->
+    <!-- QUIÉNES SOMOS -->
     <section class="py-5 bg-white">
         <div class="container section-container">
             <div class="row justify-content-center">
@@ -71,18 +71,16 @@
         </div>
     </section>
 
-    <!-- ======================================================= -->
-    <!-- ======================= MISIÓN Y VISIÓN =============== -->
-    <!-- ======================================================= -->
+    <!-- MISIÓN Y VISIÓN -->
     <section class="py-5" style="background-color: #f8f8f8;">
         <div class="container section-container">
             <!-- Misión -->
-            <div class="row mb-5 pb-5 align-items-center feature-row">
+            <div class="row mb-5 align-items-center feature-row">
                 <div class="col-md-6" data-aos="fade-right">
                     <h2 class="feature-title">Misión</h2>
                     <p class="feature-text">Somos una empresa dedicada a la prestación de servicios de consultoría, diseño, construcción, y laboratorio de obras civiles. Nuestro compromiso radica en asesorar profesionalmente a cada cliente, satisfaciendo sus necesidades en términos de calidad, tiempo, y costo; teniendo como fuente competitiva nuestro valioso capital humano.</p>
                 </div>
-                <div class="col-md-6" data-aos="fade-left">
+                <div class="col-md-6" data-aos="fade-left" data-aos-delay="100">
                     <div class="feature-image-wrapper">
                         <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop" alt="Equipo trabajando con compromiso" class="img-fluid">
                     </div>
@@ -94,7 +92,7 @@
                     <h2 class="feature-title">Visión</h2>
                     <p class="feature-text">En el 2030 seremos una empresa líder a nivel nacional, reconocida por su experticia en consultoría, diseño, construcción, y laboratorio de obras civiles; caracterizándonos por brindar servicios de alta calidad en aras de superar las expectativas de nuestra distinguida clientela.</p>
                 </div>
-                <div class="col-md-6 order-md-1" data-aos="fade-right">
+                <div class="col-md-6 order-md-1" data-aos="fade-right" data-aos-delay="100">
                     <div class="feature-image-wrapper">
                         <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop" alt="Visión de futuro y liderazgo" class="img-fluid">
                     </div>
@@ -103,7 +101,7 @@
         </div>
     </section>
 
-    <!-- VALORES -->
+    <!-- VALORES CON ICONOS -->
     <section class="py-5 bg-white">
         <div class="container section-container">
             <div class="row mb-5">
@@ -112,10 +110,46 @@
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100"><div class="value-item"><h4>Calidad</h4><p>Excelencia en cada detalle, superando los estándares más exigentes.</p></div></div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200"><div class="value-item"><h4>Compromiso</h4><p>La confianza de nuestros clientes es nuestro activo más valioso.</p></div></div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300"><div class="value-item"><h4>Innovación</h4><p>Aplicamos tecnología y nuevas metodologías para optimizar resultados.</p></div></div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400"><div class="value-item"><h4>Integridad</h4><p>Actuamos con transparencia y ética en cada una de nuestras acciones.</p></div></div>
+                <!-- Valor 1: Calidad -->
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-patch-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M10.354 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"/><path d="m10.273 2.513-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911l-1.318.016z"/></svg>
+                        </div>
+                        <h4>Calidad</h4>
+                        <p>Excelencia en cada detalle, superando los estándares más exigentes.</p>
+                    </div>
+                </div>
+                <!-- Valor 2: Compromiso -->
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16"><path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72c.001.264-.207.326-.448.326H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.5 17.5a.5.5 0 0 1-1 0V17a.5.5 0 0 1 1 0v.5zM4.5 17.5a.5.5 0 0 1-1 0V17a.5.5 0 0 1 1 0v.5zM13 17.5a.5.5 0 0 1-1 0V17a.5.5 0 0 1 1 0v.5z"/></svg>
+                        </div>
+                        <h4>Compromiso</h4>
+                        <p>La confianza de nuestros clientes es nuestro activo más valioso.</p>
+                    </div>
+                </div>
+                <!-- Valor 3: Innovación -->
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16"><path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15.5a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6 8.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zM8 1a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 1z"/></svg>
+                        </div>
+                        <h4>Innovación</h4>
+                        <p>Aplicamos tecnología y nuevas metodologías para optimizar resultados.</p>
+                    </div>
+                </div>
+                <!-- Valor 4: Integridad -->
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-shield-check" viewBox="0 0 16 16"><path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.95-.3-2.01-.666-2.837-.855A61.44 61.44 0 0 0 8 1.5a61.44 61.44 0 0 0-2.662.09zM10.854 5.146a.5.5 0 1 1-.708.708L7.5 8.207 6.354 7.06a.5.5 0 1 1 .708-.708l.792.793 2.646-2.647z"/></svg>
+                        </div>
+                        <h4>Integridad</h4>
+                        <p>Actuamos con transparencia y ética en cada una de nuestras acciones.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -123,16 +157,22 @@
     <!-- FOOTER -->
     <footer class="main-footer py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6"><h3 class="footer-title">¿Listo para empezar tu proyecto?</h3><a href="contacto.html" class="footer-contact-link">Hablemos</a></div>
-                <div class="col-md-6 text-md-end"><p class="mb-1">© 2025 GR.IngArq SAS</p><p>Todos los derechos reservados.</p></div>
+            <div class="row gy-4">
+                <div class="col-lg-4"><h3 class="footer-title">¿Listo para empezar?</h3><a href="contacto.html" class="footer-contact-link">Hablemos</a></div>
+                <div class="col-lg-4 col-md-6"><h5 class="footer-subtitle">Oficina Principal (Montería )</h5><p class="footer-text">Calle 37ª #8W - 48 B, Juan XXIII  
+Cel: 310 350 6070  
+Tel: (604) 794 8748</p></div>
+                <div class="col-lg-4 col-md-6"><h5 class="footer-subtitle">Segunda Sede (Caucasia)</h5><p class="footer-text">Calle 28 #23 – 21 Local 109  
+C.C. Santa Ana, Caucasia, Antioquia  
+Cel: 321 622 2439</p></div>
             </div>
+            <div class="row mt-5"><div class="col text-center"><p class="footer-text mb-0">© 2025 GR.IngArq SAS. Todos los derechos reservados.</p></div></div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
